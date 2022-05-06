@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Classifier {
 
-    public static final String WHITE_SPACE = " ";
-    private final List<String> operands = new ArrayList<>();
+    public static final String WHITE_SPACE_DELIMITER = " ";
+    private final List<Integer> operands = new ArrayList<>();
     private final List<String> operators = new ArrayList<>();
 
     public void classify(String singularExpression) {
-        String[] split = singularExpression.split(WHITE_SPACE);
+        String[] split = singularExpression.split(WHITE_SPACE_DELIMITER);
         for (String s : split) {
             insertSingularExpression(s);
         }
@@ -23,11 +23,11 @@ public class Classifier {
                 operators.add(element);
                 break;
             default:
-                operands.add(element);
+                operands.add(Integer.parseInt(element));
         }
     }
 
-    public List<String> getOperands() {
+    public List<Integer> getOperands() {
         return operands;
     }
 
