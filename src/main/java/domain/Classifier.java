@@ -22,16 +22,15 @@ public class Classifier {
     }
 
     private void insertSingularExpression(String element) {
-        switch (element) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-                operators.add(Operator.toOperator(element));
-                break;
-            default:
-                operands.add(Integer.parseInt(element));
+        if (element.equals("+") ||
+                element.equals("-") ||
+                element.equals("*") ||
+                element.equals("/")
+        ) {
+            operators.add(Operator.toOperator(element));
+            return;
         }
+        operands.add(Integer.parseInt(element));
     }
 
     public List<Integer> getOperands() {

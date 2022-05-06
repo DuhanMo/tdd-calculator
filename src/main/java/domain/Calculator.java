@@ -2,6 +2,8 @@ package domain;
 
 import java.util.List;
 
+import static domain.Operator.*;
+
 public class Calculator {
 
     private final Classifier classifier;
@@ -45,17 +47,18 @@ public class Calculator {
     }
 
     private int operate(int firstOperand, Operator operator, int secondOperand) {
-        switch (operator) {
-            case PLUS:
-                return firstOperand + secondOperand;
-            case MINUS:
-                return firstOperand - secondOperand;
-            case MULTIPLY:
-                return firstOperand * secondOperand;
-            case DIVISION:
-                return firstOperand / secondOperand;
-            default:
-                throw new IllegalArgumentException();
+        if (operator == PLUS) {
+            return firstOperand + secondOperand;
         }
+        if (operator == MINUS) {
+            return firstOperand - secondOperand;
+        }
+        if (operator == MULTIPLY) {
+            return firstOperand * secondOperand;
+        }
+        if (operator == DIVISION) {
+            return firstOperand / secondOperand;
+        }
+        throw new IllegalArgumentException();
     }
 }
