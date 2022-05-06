@@ -4,8 +4,13 @@ import java.util.List;
 public class Classifier {
 
     public static final String WHITE_SPACE_DELIMITER = " ";
-    private final List<Integer> operands = new ArrayList<>();
-    private final List<String> operators = new ArrayList<>();
+    private final List<Integer> operands;
+    private final List<String> operators;
+
+    public Classifier() {
+        operands = new ArrayList<>();
+        operators = new ArrayList<>();
+    }
 
     public void classify(String singularExpression) {
         String[] split = singularExpression.split(WHITE_SPACE_DELIMITER);

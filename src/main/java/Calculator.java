@@ -2,7 +2,11 @@ import java.util.List;
 
 public class Calculator {
 
-    private final Classifier classifier = new Classifier();
+    private final Classifier classifier;
+
+    public Calculator(Classifier classifier) {
+        this.classifier = classifier;
+    }
 
     public int plus(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
