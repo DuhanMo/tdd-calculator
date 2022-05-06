@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +7,7 @@ public class Classifier {
 
     public static final String WHITE_SPACE_DELIMITER = " ";
     private final List<Integer> operands;
-    private final List<String> operators;
+    private final List<Operator> operators;
 
     public Classifier() {
         operands = new ArrayList<>();
@@ -14,8 +16,8 @@ public class Classifier {
 
     public void classify(String singularExpression) {
         String[] split = singularExpression.split(WHITE_SPACE_DELIMITER);
-        for (String s : split) {
-            insertSingularExpression(s);
+        for (String element : split) {
+            insertSingularExpression(element);
         }
     }
 
@@ -25,7 +27,7 @@ public class Classifier {
             case "-":
             case "*":
             case "/":
-                operators.add(element);
+                operators.add(Operator.toOperator(element));
                 break;
             default:
                 operands.add(Integer.parseInt(element));
@@ -36,7 +38,7 @@ public class Classifier {
         return operands;
     }
 
-    public List<String> getOperators() {
+    public List<Operator> getOperators() {
         return operators;
     }
 }

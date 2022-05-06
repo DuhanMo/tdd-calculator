@@ -1,3 +1,5 @@
+import domain.Calculator;
+import domain.Classifier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,22 +30,22 @@ public class CalculateTest {
             "11, 32"
     })
     void plusTest(int firstNumber, int secondNumber) {
-        int expect = firstNumber + secondNumber;
-        assertThat(calculator.plus(firstNumber, secondNumber)).isEqualTo(expect);
+        int expected = firstNumber + secondNumber;
+        assertThat(calculator.plus(firstNumber, secondNumber)).isEqualTo(expected);
     }
 
     @DisplayName("뺄셈 테스트")
     @Test
     void minusTest() {
-        int expect = firstNumber - secondNumber;
-        assertThat(calculator.minus(firstNumber, secondNumber)).isEqualTo(expect);
+        int expected = firstNumber - secondNumber;
+        assertThat(calculator.minus(firstNumber, secondNumber)).isEqualTo(expected);
     }
 
     @DisplayName("곱셈 테스트")
     @Test
     void multiplyTest() {
-        int expect = firstNumber * secondNumber;
-        assertThat(calculator.multiply(firstNumber, secondNumber)).isEqualTo(expect);
+        int expected = firstNumber * secondNumber;
+        assertThat(calculator.multiply(firstNumber, secondNumber)).isEqualTo(expected);
     }
 
     @DisplayName("나눗셈 테스트")
@@ -54,8 +56,8 @@ public class CalculateTest {
             "100, 10"
     })
     void divisionTest(int firstNumber, int secondNumber) {
-        int expect = firstNumber / secondNumber;
-        assertThat(calculator.division(firstNumber, secondNumber)).isEqualTo(expect);
+        int expected = firstNumber / secondNumber;
+        assertThat(calculator.division(firstNumber, secondNumber)).isEqualTo(expected);
     }
 
     @DisplayName("계산기가 분류기에게 단항식 전달 테스트")
@@ -74,8 +76,8 @@ public class CalculateTest {
             "9 - 3 + 206, 212"
     })
     @DisplayName("분류기에 저장된 연산자를 이용한 계산 테스트")
-    void calculateWithClassifierOperator(String singularExpression, int expected) {
+    void calculateWithClassifierOperator(String singularExpression, int expecteded) {
         int calculateResult = calculator.calculate(singularExpression);
-        assertThat(calculateResult).isEqualTo(expected);
+        assertThat(calculateResult).isEqualTo(expecteded);
     }
 }

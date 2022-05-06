@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.List;
 
 public class Calculator {
@@ -31,7 +33,7 @@ public class Calculator {
     public int calculate(String singularExpression) {
         classifier.classify(singularExpression);
         List<Integer> operands = classifier.getOperands();
-        List<String> operators = classifier.getOperators();
+        List<Operator> operators = classifier.getOperators();
         int tmpResult;
         int result = operands.get(0);
         for (int i = 0; i < operands.size() - 1; i++) {
@@ -42,15 +44,15 @@ public class Calculator {
         return result;
     }
 
-    private int operate(int firstOperand, String operator, int secondOperand) {
+    private int operate(int firstOperand, Operator operator, int secondOperand) {
         switch (operator) {
-            case "+":
+            case PLUS:
                 return firstOperand + secondOperand;
-            case "-":
+            case MINUS:
                 return firstOperand - secondOperand;
-            case "*":
+            case MULTIPLY:
                 return firstOperand * secondOperand;
-            case "/":
+            case DIVISION:
                 return firstOperand / secondOperand;
             default:
                 throw new IllegalArgumentException();
